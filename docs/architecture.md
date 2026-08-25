@@ -1,19 +1,23 @@
-# Architecture: Text-to-SQL with Guardrails
+# text-to-sql-guardrails Architecture
 
 ## System Diagram
-The following Mermaid.js sequence diagram maps the core workflow and interactions:
+The following Mermaid.js sequence diagram maps the core workflow and interactions within the system:
 
 ```mermaid
 sequenceDiagram
-User->>API: Question
-API->>LLM: Generate SQL
-LLM-->>API: Raw SQL
-API->>Guardrail: Block DML/DDL
-Guardrail->>SanityCheck: Validate syntax
-API->>DB: Execute Read-Only
-API-->>User: Results
+    LLM->>Guardrail: Generated SQL
+Guardrail->>Parser: Parse AST
+Parser->>Validator: Check for DROP/DELETE/TRUNCATE
+Validator-->>Guardrail: Safe/Unsafe
+Guardrail->>DB: Execute (if Safe)
+Guardrail-->>Client: Results or Error
 ```
 
 ## Component Breakdown
-- **Core Technology**: Python, SQLAlchemy, PostgreSQL
-- **Design Paradigm**: Emphasizes high availability, fault tolerance, and security.
+- **Core Technology**: Node.js, Jest
+- **Design Paradigm**: Emphasizes high availability, fault tolerance, and security boundaries.
+
+## Security & Scaling Considerations
+- Strict input validations and sanitization.
+- Horizontal scalability achieved via stateless workers and queues where applicable.
+- Encrypted data at rest and in transit.

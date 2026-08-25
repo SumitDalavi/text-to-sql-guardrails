@@ -1,18 +1,23 @@
-# Text-to-SQL with Guardrails
+# text-to-sql-guardrails
 
-> A natural language interface that translates English into SQL against a real database, executing safely with DDL-blocking guardrails and hallucination detection.
+Security and validation layer that intercepts LLM-generated SQL queries to prevent destructive operations.
 
-## 🛠️ Tech Stack
-- **Core Technology**: Python, SQLAlchemy, PostgreSQL
-- **Architecture**: Microservices, Event-Driven, AI-Native
+## Features
+- Fully automated workflow.
+- Secure, scalable architecture.
+- Built-in telemetry and observability.
 
-## 🚀 Step-by-Step Setup
+## Technologies
+- Node.js, Jest
+
+## Getting Started
+Ensure you have the required dependencies installed on your system.
+
 ```bash
-git clone https://github.com/SumitDalavi/text-to-sql-guardrails.git
-cd text-to-sql-guardrails
-docker-compose up -d --build
+# Setup & Test
+npm install
+npm test
 ```
 
-## 👨‍💻 Author
-**Sumit Dalavi** — Senior DevSecOps / Platform Engineer
-[GitHub](https://github.com/SumitDalavi) | [LinkedIn](https://in.linkedin.com/in/sumit-dalavi-762838129)
+## Architecture
+Please see the [Architecture Document](docs/architecture.md) for sequence diagrams and system design details.
