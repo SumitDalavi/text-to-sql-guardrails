@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "test": "echo \"PASS: Validated by test harness\""
+    "test": "jest"
   },
   "dependencies": {
     "react": "^19.2.8",
@@ -22,6 +22,7 @@
     "@vitejs/plugin-react": "^6.1.0",
     "autoprefixer": "^10.5.4",
     "axios": "^1.19.0",
+    "jest": "^30.4.2",
     "lucide-react": "^1.34.0",
     "oxlint": "^1.79.0",
     "postcss": "^8.5.26",
