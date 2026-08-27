@@ -1,1 +1,2 @@
 # text-to-sql-guardrails dependencies
+pytest
