@@ -1,19 +1,33 @@
 name: CI Pipeline
-on:
+'on':
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 jobs:
+  build:
+    name: Node.js Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+      - name: Install Dependencies
+        run: npm install
   python-build-test:
     name: Python Build & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.11'
       - name: Install Dependencies
         run: pip install -r requirements.txt
       - name: Run Tests
-        run: pytest tests/ -v --tb=short
+        run: pytest
