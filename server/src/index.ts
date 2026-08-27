@@ -67,9 +67,12 @@ app.post('/api/v1/query', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 4001; // Port 4001 to avoid conflicting with previous projects
-initDb().then(() => {
-  app.listen(PORT, () => {
-    console.log(`Text-to-SQL API running on port ${PORT}`);
+const PORT = process.env.PORT || 4001;
+if (require.main === module) {
+  initDb().then(() => {
+    app.listen(PORT, () => {
+      console.log(`Text-to-SQL API running on port ${PORT}`);
+    });
   });
-});
+}
+export default app;
