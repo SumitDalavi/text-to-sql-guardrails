@@ -1,23 +1,35 @@
-# text-to-sql-guardrails Architecture
+# Architecture — text-to-sql-guardrails
+> Last updated: 2026-08-29 | Maturity: Full Prototype
+> _Validation layer intercepting LLM-generated SQL._
 
 ## System Diagram
-The following Mermaid.js sequence diagram maps the core workflow and interactions within the system:
+The following Mermaid.js sequence diagram maps the core workflow and interactions:
 
 ```mermaid
-sequenceDiagram
-    LLM->>Guardrail: Generated SQL
-Guardrail->>Parser: Parse AST
-Parser->>Validator: Check for DROP/DELETE/TRUNCATE
-Validator-->>Guardrail: Safe/Unsafe
-Guardrail->>DB: Execute (if Safe)
-Guardrail-->>Client: Results or Error
+flowchart TD
+    App(["User Application"])
+    LLM["LLM (Text-to-SQL)"]
+    Guard["Guardrails Layer (AST Parser)"]
+    DB[("Target Database")]
+
+    App -->|"Natural Language"| LLM
+    LLM -->|"Generated SQL"| Guard
+    Guard -->|"AST Validation (Allowed)"| DB
+    Guard -->|"AST Validation (Rejected)"| App
+    DB -->|"Results"| App
 ```
 
-## Component Breakdown
-- **Core Technology**: Node.js, Jest
-- **Design Paradigm**: Emphasizes high availability, fault tolerance, and security boundaries.
+## Component Table
 
-## Security & Scaling Considerations
-- Strict input validations and sanitization.
-- Horizontal scalability achieved via stateless workers and queues where applicable.
-- Encrypted data at rest and in transit.
+| Component | File | Responsibility | Tech |
+|---|---|---|---|
+| Validator | `src/validator.py` | Core engine checking AST structures | Python |
+| Dialect Checks | `src/dialects.py` | Ensures query matches Postgres/MySQL | Python |
+
+## Dependency Honesty Table
+
+| Dependency | Status | Notes |
+|---|---|---|
+| SQLGlot (AST) | **Real** | Performs actual deep parsing of queries. |
+| LLM | **Simulated** | E2E tests feed hardcoded bad queries instead of calling an LLM. |
+| Target DB | **Simulated** | We only validate the query, we don't execute it. |
