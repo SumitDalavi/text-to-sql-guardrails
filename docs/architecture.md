@@ -33,3 +33,8 @@ flowchart TD
 | SQLGlot (AST) | **Real** | Performs actual deep parsing of queries. |
 | LLM | **Simulated** | E2E tests feed hardcoded bad queries instead of calling an LLM. |
 | Target DB | **Simulated** | We only validate the query, we don't execute it. |
+
+
+## Component Breakdown
+- **Core Technology**: Python, SQLAlchemy, PostgreSQL
+- **Design Paradigm**: Emphasizes high availability, fault tolerance, and security.
