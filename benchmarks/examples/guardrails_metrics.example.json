@@ -1,0 +1,19 @@
+{
+    "timestamp":  "2026-08-29T12:00:00Z",
+    "dataset":  "spider_and_adversarial_mix",
+    "metrics":  {
+                    "total_queries_tested":  5000,
+                    "safe_queries_allowed":  4200,
+                    "malicious_queries_blocked":  800,
+                    "false_positive_rate_percentage":  0.1,
+                    "false_negative_rate_percentage":  0.0,
+                    "bypass_incidents":  0,
+                    "latency":  {
+                                    "ast_parse_overhead_avg_ms":  2.1,
+                                    "p99_parse_latency_ms":  5.4
+                                }
+                },
+    "status":  "success",
+    "notes":  "Dummy benchmark results generated to demonstrate AST validation accuracy and zero-bypass guarantee.",
+    "illustrative":  true
+}
