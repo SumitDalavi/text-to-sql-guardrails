@@ -2,6 +2,10 @@
 # text-to-sql-guardrails
 
 [![Release](https://img.shields.io/github/v/release/SumitDalavi/text-to-sql-guardrails?color=blue&logo=github)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
+[![Release Workflow](https://github.com/SumitDalavi/text-to-sql-guardrails/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/text-to-sql-guardrails/actions/workflows/release.yml)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
+
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/text-to-sql-guardrails?color=blue&logo=github)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
 
 > **Maturity:** Full Prototype
@@ -50,7 +54,7 @@ npm test
 ## Architecture
 Please see the [Architecture Document](docs/architecture.md) for sequence diagrams and system design details.
 
-## Release & Verification
+## Release & Security Verification
 
 The project includes an automated DevSecOps release pipeline (`.github/workflows/release.yml`) triggered on semantic version tags (`v*.*.*`).
 
@@ -70,3 +74,10 @@ gh release view v0.1.0 --repo SumitDalavi/text-to-sql-guardrails
 gh release download v0.1.0 --repo SumitDalavi/text-to-sql-guardrails --pattern "sbom.spdx.json"
 cat sbom.spdx.json | jq .
 ```
+
+## Documentation
+
+- [Architecture](docs/ARCHITECTURE.md)
+- [Runbook](docs/runbook.md)
+- [Decisions](docs/decisions.md)
+- [Changelog](docs/changelog.md)
