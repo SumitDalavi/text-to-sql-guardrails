@@ -1,9 +1,9 @@
 FROM node:20-alpine
 WORKDIR /app
-COPY server/package*.json ./server/
-WORKDIR /app/server
+COPY server/package*.json ./
 RUN npm install
-COPY server/ ./
+COPY server/tsconfig.json ./
+COPY server/src ./src
 RUN npx tsc
 ENV PORT=8080
 EXPOSE 8080
