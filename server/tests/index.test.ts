@@ -195,5 +195,13 @@ describe('Text to SQL Guardrails System', () => {
       expect(res.status).toBe(500);
       expect(res.body.error).toBe('LLM Failure');
     });
+
+    it('GET /health should return 200 and report PCL mode', async () => {
+      const res = await request(app).get('/health');
+      expect(res.status).toBe(200);
+      expect(res.body.status).toBe('ok');
+      expect(res.body.mode).toHaveProperty('openai');
+      expect(res.body.mode).toHaveProperty('database');
+    });
   });
 });

@@ -1,6 +1,8 @@
 import { ChatOpenAI } from "@langchain/openai";
 import { ValidationSchema } from "../models/schema";
 
+import { isLiveOpenAIKey } from "../shared/credential-mode";
+
 export async function checkHallucination(originalQuestion: string, generatedSql: string, executedResults: any[]): Promise<{
   confidence: number,
   warnings: string[],
@@ -23,10 +25,21 @@ export async function checkHallucination(originalQuestion: string, generatedSql:
     }
   }
 
+  // If no live key is set and not running inside Jest mock, return deterministic response
+  if (!isLiveOpenAIKey(process.env.OPENAI_API_KEY) && !(ChatOpenAI as any).mock && !(ChatOpenAI as any)._isMockFunction) {
+    return {
+      confidence: Math.max(0, confidence),
+      warnings,
+      backTranslation: `[MOCK] Validated query: ${generatedSql}`,
+      alignmentScore: 5
+    };
+  }
+
   // 2. Back-Translation (LLM-as-judge)
   const model = new ChatOpenAI({
     modelName: "gpt-4o-mini",
     temperature: 0.1,
+    apiKey: process.env.OPENAI_API_KEY || "sk-dummy",
   }).withStructuredOutput(ValidationSchema);
 
   const prompt = `You are a SQL auditor. 

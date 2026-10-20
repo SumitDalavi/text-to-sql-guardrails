@@ -7,9 +7,19 @@ import { generateSql } from './sql/generator';
 import { enforceGuardrails, GuardrailError } from './sql/guardrails';
 import { checkHallucination } from './validation/validator';
 
+import { detectMode } from './shared/credential-mode';
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.get('/health', (req, res) => {
+  res.json({
+    status: 'ok',
+    service: 'text-to-sql-guardrails',
+    mode: detectMode(),
+  });
+});
 
 app.get('/api/v1/schema', (req, res) => {
   try {
