@@ -1,12 +1,14 @@
 
 # text-to-sql-guardrails
 
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/text-to-sql-guardrails?color=blue&logo=github)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
+[![CI Pipeline](https://github.com/SumitDalavi/text-to-sql-guardrails/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/SumitDalavi/text-to-sql-guardrails/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/SumitDalavi/text-to-sql-guardrails?color=0969da&label=release&logo=github)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
 [![Release Workflow](https://github.com/SumitDalavi/text-to-sql-guardrails/actions/workflows/release.yml/badge.svg)](https://github.com/SumitDalavi/text-to-sql-guardrails/actions/workflows/release.yml)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
-
-[![Release](https://img.shields.io/github/v/release/SumitDalavi/text-to-sql-guardrails?color=blue&logo=github)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
-[![SBOM](https://img.shields.io/badge/SBOM-SPDX%20JSON-blueviolet?logo=spdx)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases)
+[![GHCR Container](https://img.shields.io/badge/ghcr.io-v0.2.0-blue?logo=docker&logoColor=white)](https://github.com/SumitDalavi/text-to-sql-guardrails/pkgs/container/text-to-sql-guardrails)
+[![Node.js](https://img.shields.io/badge/Node.js-20+-339933?logo=nodedotjs&logoColor=white)](https://nodejs.org)
+[![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](https://www.python.org)
+[![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases/tag/v0.2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 > **Maturity:** Full Prototype
 > _Security and validation layer that intercepts LLM-generated SQL queries to prevent destructive operations._
@@ -59,13 +61,11 @@ Enterprise deployment with production-grade backends, security scans, and contai
 - [Decisions](docs/decisions.md) — ADRs for guardrail pattern choices
 - [Changelog](docs/changelog.md) — Change history
 
-
 ## CI & Reliability Updates (August 2026)
 
 - **CI Pipeline Remediation:** Successfully resolved all CI/CD pipeline failures and established baseline CI workflows.
 - **Specific Fix:** Added and configured robust GitHub Actions workflows for automated testing, linting, and formatting.
 - **Status:** 🟩 Passing
-
 
 ## Getting Started
 Ensure you have the required dependencies installed on your system.
