@@ -9,8 +9,7 @@
 [![SBOM](https://img.shields.io/badge/SBOM-SPDX%202.3-blueviolet?logo=spdx)](https://github.com/SumitDalavi/text-to-sql-guardrails/releases/tag/v0.2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
-> **Maturity:** Full Prototype
-> _Security and validation layer that intercepts LLM-generated SQL queries to prevent destructive operations._
+> Security and validation layer that intercepts LLM-generated SQL queries via AST parsing to prevent destructive operations and data leakage.
 
 ## Features
 - Fully automated workflow.
